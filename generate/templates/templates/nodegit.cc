@@ -69,9 +69,10 @@ void LockMasterSetStatus(const FunctionCallbackInfo<Value>& info) {
   Nan::HandleScope scope;
 
   // convert the first argument to Status
-  if(info.Length() >= 0 && info[0]->IsNumber()) {
-    v8::Local<v8::Int32> value = info[0]->ToInt32();
-    LockMaster::Status status = static_cast<LockMaster::Status>(value->Value());
+  if(info.Length() >= 0 && info[0]->IsUint32()) {
+    uint value = info[0]->Uint32Value();
+
+    LockMaster::Status status = static_cast<LockMaster::Status>(value);
     if(status >= LockMaster::Disabled && status <= LockMaster::Enabled) {
       LockMaster::SetStatus(status);
       return;
@@ -81,6 +82,7 @@ void LockMasterSetStatus(const FunctionCallbackInfo<Value>& info) {
   // argument error
   Nan::ThrowError("Argument must be one 0, 1 or 2");
 }
+
 
 void LockMasterGetStatus(const FunctionCallbackInfo<Value>& info) {
   info.GetReturnValue().Set(Nan::New(LockMaster::GetStatus()));
