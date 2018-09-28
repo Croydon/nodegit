@@ -1,5 +1,5 @@
 # appveyor file
-# https://www.appveyor.com/docs/appveyor-yml/
+# https://www.appveyor.com/docs/appveyor-yml
 
 image: Visual Studio 2015
 
