@@ -1,5 +1,5 @@
 # appveyor file
-# http://www.appveyor.com/docs/appveyor-yml
+# https://www.appveyor.com/docs/appveyor-yml
 
 image: Visual Studio 2015
 
@@ -55,8 +55,3 @@ on_success:
   - IF %APPVEYOR_REPO_TAG%==true node-pre-gyp publish
 
 build: off
-
-branches:
-  only:
-    - master
-    - v0.3
